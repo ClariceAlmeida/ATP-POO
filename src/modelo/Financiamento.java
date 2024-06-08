@@ -30,7 +30,7 @@ public class Financiamento {
     // metodos
     // calcula pagamento mensal
     public double calcularPagamentoMensal(){
-        return(valorImovel / (prazoFinanciamento * 12)) * (1 + (taxaJurosAnual/12));
+        return(valorImovel / (prazoFinanciamento * 12)) * (1 + ((taxaJurosAnual/100)/12));
     }
 
     // calcula pagamento total
@@ -40,7 +40,17 @@ public class Financiamento {
 
     // mostra dados do financiamento
     public String mostrarDadosFinanciamento(double pagamentoMensal){
-        return "Valor Imóvel: " + "R$" + getValorImovel() + "\n" + "Prazo de financiamento (em anos): " + getPrazoFinanciamento() + "\n" + "Taxa de juros anual: " + getTaxaJurosAnual() + "%" + "\n" +
-                "Valor total do financiamento: " + "R$" + calcularPagamentoTotal(pagamentoMensal) + "\n" + "Valor das parcelas: " + "R$" + calcularPagamentoMensal() + "\n";
+        return String.format(
+                "Valor Imóvel: R$%.2f%n" +
+                        "Prazo de financiamento (em anos): %d%n" +
+                        "Taxa de juros anual: %.2f%%%n" +
+                        "Valor total do financiamento: R$%.2f%n" +
+                        "Valor das parcelas: R$%.2f%n",
+                getValorImovel(),
+                getPrazoFinanciamento(),
+                getTaxaJurosAnual(),
+                calcularPagamentoTotal(pagamentoMensal),
+                calcularPagamentoMensal()
+        );
     }
 }

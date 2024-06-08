@@ -11,7 +11,7 @@ public class InterfaceUsuario {
     // valor do imovel não pode ser 0, nem negativo nem menor que 2k
     public boolean validarValorImovel(double valorImovel){
         if(valorImovel < 2000){
-            System.out.println("Valor do imóvel inválido.\n Valor do imóvel precisa ser maior que R$2.000");
+            System.out.println("Valor do imóvel inválido.\nValor do imóvel precisa ser maior que R$2.000");
             return false;
         }
         return true;
