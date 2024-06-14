@@ -1,6 +1,9 @@
 package main;
 
+import modelo.Apartamento;
+import modelo.Casa;
 import modelo.Financiamento;
+import modelo.Terreno;
 import util.InterfaceUsuario;
 
 import java.util.ArrayList;
@@ -14,18 +17,19 @@ public class Main {
         // array para guardar os financiamentos
         ArrayList<Financiamento> financiamentosCadastrados = new ArrayList<>();
 
-        // do-while para cadastrar 4 financiamentos
-        do {
-            // trazer dados válidos
-            double valorImovel = novaInterface.cadastrarValorImovelValido();
-            int prazoFinanciamento = novaInterface.cadastrarPrazodeFinanciamentoValido();
-            double taxaJurosAnual = novaInterface.cadastrarTaxadeJurosValida();
 
-            // cria um novo financiamento com os dados inseridos (após validação bem-sucedida)
-            Financiamento novoFinanciamento = new Financiamento(valorImovel, prazoFinanciamento, taxaJurosAnual);
-            financiamentosCadastrados.add(novoFinanciamento);
-            System.out.println("Financiamento Cadastrado!");
-        } while (financiamentosCadastrados.size() < 4);
+        //semana 5 - cadastro manual de imoveis
+        var casa1 = new Casa(novaInterface.cadastrarValorImovelValido(), novaInterface.cadastrarPrazodeFinanciamentoValido(), novaInterface.cadastrarTaxadeJurosValida());
+        financiamentosCadastrados.add(casa1);
+        var casa2 = new Casa(500000, 10, 10);
+        financiamentosCadastrados.add(casa2);
+        var apartamento1 = new Apartamento(500000,10,10);
+        financiamentosCadastrados.add(apartamento1);
+        var apartamento2 = new Apartamento(100000,20,15);
+        financiamentosCadastrados.add(apartamento2);
+        var terreno = new Terreno(500000, 10,10);
+        financiamentosCadastrados.add(terreno);
+
 
         // seta as variaveis que serão utilizadas no for
         int i = 0;
@@ -39,9 +43,7 @@ public class Main {
             valorTotalImoveis += f.getValorImovel();
             valorTotalFinanciamento += f.calcularPagamentoTotal(f.calcularPagamentoMensal());
 
-            System.out.println("- Financiamento " + (i+1) + " -- " +
-                    "Valor do imóvel: R$" + String.format("%.2f", f.getValorImovel()) + "," +
-                    " Valor financiamento: R$" + String.format("%.2f", f.calcularPagamentoTotal(f.calcularPagamentoMensal())));
+            System.out.println("- Financiamento " + (i+1) + " - \n" + f.mostrarDadosFinanciamento(f.calcularPagamentoMensal()) + "\n");
             i++;
 
         }
@@ -52,3 +54,17 @@ public class Main {
 
     }
 }
+
+
+//        // do-while para cadastrar 4 financiamentos - semana 4
+//        do {
+//            // trazer dados válidos
+//            double valorImovel = novaInterface.cadastrarValorImovelValido();
+//            int prazoFinanciamento = novaInterface.cadastrarPrazodeFinanciamentoValido();
+//            double taxaJurosAnual = novaInterface.cadastrarTaxadeJurosValida();
+//
+//            // cria um novo financiamento com os dados inseridos (após validação bem-sucedida)
+//            Financiamento novoFinanciamento = new Financiamento(valorImovel, prazoFinanciamento, taxaJurosAnual);
+//            financiamentosCadastrados.add(novoFinanciamento);
+//            System.out.println("Financiamento Cadastrado!");
+//        } while (financiamentosCadastrados.size() < 4);

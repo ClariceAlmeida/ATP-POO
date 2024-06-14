@@ -3,9 +3,9 @@ package modelo;
 public class Financiamento {
 
     // atributos
-    private double valorImovel;
-    private int prazoFinanciamento;
-    private double taxaJurosAnual;
+    protected double valorImovel;
+    protected int prazoFinanciamento;
+    protected double taxaJurosAnual;
 
     // construtor
     public Financiamento(double valorImovel, int prazoFinanciamento, double taxaJurosAnual){
