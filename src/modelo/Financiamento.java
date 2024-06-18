@@ -1,6 +1,6 @@
 package modelo;
 
-public class Financiamento {
+public abstract class Financiamento {
 
     // atributos
     protected double valorImovel;
@@ -19,6 +19,7 @@ public class Financiamento {
         return this.valorImovel;
     }
 
+
     public int getPrazoFinanciamento(){
         return this.prazoFinanciamento;
     }
@@ -28,29 +29,14 @@ public class Financiamento {
     }
 
     // metodos
-    // calcula pagamento mensal
-    public double calcularPagamentoMensal(){
-        return(valorImovel / (prazoFinanciamento * 12)) * (1 + ((taxaJurosAnual/100)/12));
-    }
+    // calcula pagamento mensal - implementação diferente para todas as classes - método abstrato
+    public abstract double calcularPagamentoMensal();
 
-    // calcula pagamento total
+    // calcula pagamento total - comum a todos as subclasses
     public double calcularPagamentoTotal(double pagamentoMensal){
         return pagamentoMensal * prazoFinanciamento * 12;
     }
 
-    // mostra dados do financiamento
-    public String mostrarDadosFinanciamento(double pagamentoMensal){
-        return String.format(
-                "Valor Imóvel: R$%.2f%n" +
-                        "Prazo de financiamento (em anos): %d%n" +
-                        "Taxa de juros anual: %.2f%%%n" +
-                        "Valor total do financiamento: R$%.2f%n" +
-                        "Valor das parcelas: R$%.2f%n",
-                getValorImovel(),
-                getPrazoFinanciamento(),
-                getTaxaJurosAnual(),
-                calcularPagamentoTotal(pagamentoMensal),
-                calcularPagamentoMensal()
-        );
-    }
+    // mostra dados do financiamento - implementeção diferente para as subclasses - método abstrato
+    public abstract String mostrarDadosFinanciamento(double pagamentoMensal);
 }
