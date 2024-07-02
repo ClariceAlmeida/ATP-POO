@@ -4,12 +4,13 @@ import modelo.Apartamento;
 import modelo.Casa;
 import modelo.Financiamento;
 import modelo.Terreno;
+import util.FinanciamentoException;
 import util.InterfaceUsuario;
 
 import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FinanciamentoException {
 
         // instanciei uma nova interface inteira para não tornar os metodos static
         InterfaceUsuario novaInterface = new InterfaceUsuario();
